@@ -33,7 +33,7 @@
 case "${1}" in
    start)
       log_info_msg "Remounting root file system in read-write mode..."
-      mount --options remount,rw / >/dev/null
+      mount -o remount,rw / >/dev/null
       evaluate_retval
 
       # Remove fsck-related file system watermarks.
@@ -47,7 +47,7 @@ case "${1}" in
 
       log_info_msg "Mounting remaining file systems..."
       failed=0
-      mount --all --test-opts no_netdev >/dev/null || failed=1
+      mount -a -O no_netdev >/dev/null || failed=1
       evaluate_retval
       exit $failed
       ;;
@@ -57,12 +57,12 @@ case "${1}" in
       log_info_msg "Unmounting all other currently mounted file systems..."
       # Ensure any loop devies are removed
       losetup -D
-      umount --all --detach-loop --read-only \
-             --types notmpfs,nosysfs,nodevtmpfs,noproc,nodevpts >/dev/null
+      umount -a -d -r \
+             -t notmpfs,nosysfs,nodevtmpfs,noproc,nodevpts >/dev/null
       evaluate_retval
 
       # Make sure / is mounted read only (umount bug)
-      mount --options remount,ro /
+      mount -o remount,ro /
 
       # Make all LVM volume groups unavailable, if appropriate
       # This fails if swap or / are on an LVM partition

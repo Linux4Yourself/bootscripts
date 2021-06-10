@@ -1,3 +1,9 @@
+2021-06-10 Dmitry Bashkatov <citokot@gmail.com>
+
+   * Sync
+   * Use short mount options to compatible with busybox
+   * Adapt to merged /usr/bin configuretion
+
 2021-04-28 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Make check_signal more robust. 
    * Use a better methog for killproc to remove a dead pid file.
@@ -1010,7 +1016,7 @@ n/a - February 19, 2004
 
    * Fixed checkfs script, so it will no longer continue to boot after a
      failure in the init.d/checkfs script.  Tested with the help of Andre
-     Müller.  Fix suggested by Zack
+     Miller.  Fix suggested by Zack
 
 n/a - February 7, 2004
 
