@@ -21,7 +21,7 @@
 ## Environmental setup
 # Setup default values for environment
 umask 022
-export PATH="/usr/bin"
+export PATH="/bin:/usr/bin:/sbin:/usr/sbin"
 
 ## Set color commands, used via echo
 # Please consult `man console_codes for more information
